@@ -1,6 +1,19 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 
 const Countries = ({filteredCountries, singleCountry, setSearchString}) => {
+    const api_key = process.env.REACT_APP_API_KEY
+    const [weather, setWeather] = useState(null)
+    useEffect(() => {
+        if (singleCountry) {
+          axios
+            .get(`https://api.weatherstack.com/current?access_key=${api_key}&query=${singleCountry[0].capital}`)
+            .then(response => {
+              setWeather(response.data)
+              console.log(response.data)
+            })
+        }
+    }, [singleCountry, api_key])
 
     return ( 
         singleCountry !== null ? (
@@ -15,6 +28,7 @@ const Countries = ({filteredCountries, singleCountry, setSearchString}) => {
                 ))}
             </ul>
             <img src={singleCountry[0].flags.svg} alt={singleCountry[0].name.common} style={{maxHeight: '100px'}} />
+            {weather && <p>Temperature: {weather}</p>}
             </>
         ):
         typeof filteredCountries === 'string' ? (
