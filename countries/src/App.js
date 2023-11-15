@@ -26,7 +26,7 @@ const App = () => {
         setSingleCountry(null)
       }
     }
-  }, [searchString])
+  }, [searchString, countries])
     
   useEffect(() => {
     axios
@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div>
       <Filter searchString={searchString} setSearchString={setSearchString} />
-      <Countries filteredCountries={filteredCountries} singleCountry={singleCountry} />
+      <Countries filteredCountries={filteredCountries} singleCountry={singleCountry} setSearchString={setSearchString} />
     </div>
   )
 }

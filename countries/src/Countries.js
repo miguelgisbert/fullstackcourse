@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Countries = ({filteredCountries, singleCountry}) => {
+const Countries = ({filteredCountries, singleCountry, setSearchString}) => {
 
     return ( 
         singleCountry !== null ? (
@@ -14,14 +14,14 @@ const Countries = ({filteredCountries, singleCountry}) => {
                     <li key={index}>{language}</li>
                 ))}
             </ul>
-            <img src={singleCountry[0].flags.svg} style={{maxHeight: '100px'}} />
+            <img src={singleCountry[0].flags.svg} alt={singleCountry[0].name.common} style={{maxHeight: '100px'}} />
             </>
         ):
         typeof filteredCountries === 'string' ? (
           <p>{filteredCountries}</p>
         ) : (
         filteredCountries.map(country => (            
-            <p key={country.name.common}>{country.name.common}</p>  
+            <p key={country.name.common}>{country.name.common}<button onClick={()=>{setSearchString(country.name.common)}} style={{margin: "10px 5px"}}>Show</button></p> 
         ))
         )
     )
