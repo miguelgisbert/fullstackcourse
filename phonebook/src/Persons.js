@@ -12,7 +12,7 @@ const Persons = ({persons, searchString}) => {
         <>
         <h2>Numbers</h2>
         {persons.filter(filterFn).map(person => (
-            <p key={person.key}>{person.name} {person.number}</p>
+            <p key={person.id}>{person.name} {person.number}</p>
         )
         )}
         </>
