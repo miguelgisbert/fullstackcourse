@@ -32,10 +32,18 @@ const App = () => {
       personService
         .create(person)
         .then(returnedPerson => {
-          setPersons(persons.concat(person))
+          setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
         })
+    }
+  }
+
+  const deletePerson = (id, name) => {
+    if (window.confirm(`Are you sure you want to delete ${name}?`)) {
+      personService
+        .deletePerson(id)
+        .then(setPersons(persons.filter(person => person.id !== id)))
     }
   }
 
@@ -44,7 +52,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <Filter searchString={searchString} setSearchString={setSearchString} />
       <PersonForm addPerson={addPerson} newName={newName} setNewName={setNewName} newNumber={newNumber} setNewNumber={setNewNumber} />
-      <Persons persons={persons} searchString={searchString} />
+      <Persons persons={persons} searchString={searchString} deletePerson={deletePerson} />
     </div>
   )
 }
