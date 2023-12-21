@@ -57,7 +57,7 @@ app.post('/api/notes', (request, response) => {
       : 0
     return maxId + 1
   }
-  note.id = maxId + 1
+  const body = request.body
   if (!body.content) {
     return response.status(400).json({ 
       error: 'content missing' 

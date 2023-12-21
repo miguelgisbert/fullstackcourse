@@ -64,16 +64,23 @@ app.post('/api/persons', (request, response) => {
       : 0
     return maxId + 1
   }
-  person.id = maxId + 1
-  if (!body.content) {
+
+  const body = request.body
+  if (!body.name) {
     return response.status(400).json({ 
       error: 'content missing' 
     })
   }
+
+  if (persons.some(person => person.name === body.name)) {
+    return response.status(409).json({
+      error: 'name must be unique'
+    })
+  }
+
   const person = {
-    content: body.content,
-    important: body.important || false,
-    date: new Date(),
+    name: body.name,
+    number: body.number,
     id: generateId(),
   }
   persons = persons.concat(person)
