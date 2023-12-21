@@ -1,0 +1,32 @@
+{
+  "name": "part3",
+  "version": "1.0.0",
+  "description": "Fullstack course part 3",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm test",
+    "dev": "nodemon index.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/miguelgisbert/fullstackcourse.git"
+  },
+  "keywords": [
+    "react",
+    "node",
+    "course"
+  ],
+  "author": "Miguel Gisbert Osuna",
+  "license": "CC NC-ND",
+  "bugs": {
+    "url": "https://github.com/miguelgisbert/fullstackcourse/issues"
+  },
+  "homepage": "https://github.com/miguelgisbert/fullstackcourse#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
